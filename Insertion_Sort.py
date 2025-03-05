@@ -1,11 +1,14 @@
 import random
-# insertion sort2
-lst = random.sample(range(-2000000, 2000000), 100000)
-for i in range(1, len(lst)):
-    currentElement = lst[i]
-    k = i - 1
-    while k >= 0 and lst[k] > currentElement:
-        lst[k + 1] = lst[k]
-        k -= 1
+class Insertion_Sort:
+    def __init__(self,lst):
+        self.lst=lst
 
-    lst[k + 1] = currentElement
+    def sort(self):
+        for i in range(1, len(self.lst)):
+            currentElement = self.lst[i]
+            k = i - 1
+            while k >= 0 and self.lst[k] > currentElement:
+                self.lst[k + 1] = self.lst[k]
+                k -= 1
+            self.lst[k + 1] = currentElement
+        return self.lst

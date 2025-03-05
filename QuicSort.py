@@ -1,40 +1,45 @@
+class Quick_Sort:
+    def __init__(self, lst):
+        self.lst = lst
 
-#Quic sort2
-def quickSort(lst):
-    quickSortHelper(lst, 0, len(lst) - 1)
-def quickSortHelper(lst, first, last):
-    if last > first:
-        pivotIndex = partition(lst, first, last)
-        quickSortHelper(lst, first, pivotIndex - 1)
-        quickSortHelper(lst, pivotIndex + 1, last)
-def partition(lst, first, last):
-    pivot = lst[first]  # Choose the first element as the pivot
-    low = first + 1  # Index for forward search
-    high = last  # Index for backward search
+    def partition(self, first, last):
+        pivot = self.lst[first]  # Choose the first element as the pivot
+        low = first + 1  # Index for forward search
+        high = last  # Index for backward search
 
-    while high > low:
-        # Search forward from left
-        while low <= high and lst[low] <= pivot:
-            low += 1
+        while high > low:
+            # Search forward from left
+            while low <= high and self.lst[low] <= pivot:
+                low += 1
 
-        # Search backward from right
-        while low <= high and lst[high] > pivot:
+            # Search backward from right
+            while low <= high and self.lst[high] > pivot:
+                high -= 1
+
+            # Swap two elements in the list
+            if high > low:
+                self.lst[high], self.lst[low] = self.lst[low], self.lst[high]  # Doğru swap
+
+        while high > first and self.lst[high] >= pivot:
             high -= 1
 
-        # Swap two elements in the list
-        if high > low:
-            lst[high], lst[low] = lst[low], lst[low]
+        # Swap pivot with lst[high]
+        if pivot > self.lst[high]:
+            self.lst[first] = self.lst[high]
+            self.lst[high] = pivot
+            return high
+        else:
+            return first
 
-    while high > first and lst[high] >= pivot:
-        high -= 1
+    def quickSortHelper(self, first, last):
+        if last > first:
+            pivotIndex = self.partition(first, last)
+            self.quickSortHelper(first, pivotIndex - 1)
+            self.quickSortHelper(pivotIndex + 1, last)
 
-    # Swap pivot with lst[high]
-    if pivot > lst[high]:
-        lst[first] = lst[high]
-        lst[high] = pivot
-        return high
-    else:
-        return first
+    def quickSort(self):
+        self.quickSortHelper( 0, len(self.lst) - 1)
 
-
-print(quickSort([1,4,2,45,60,5]))
+    def sort(self):
+        self.quickSortHelper(0, len(self.lst) - 1)
+        return self.lst  # Sıralı listeyi döndürüyoruz
