@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BisectionRootFinder.iml" filepath="$PROJECT_DIR$/.idea/BisectionRootFinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SortAlgoritms.iml" filepath="$PROJECT_DIR$/.idea/SortAlgoritms.iml" />
     </modules>
   </component>
 </project>
